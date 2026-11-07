@@ -70,6 +70,20 @@ spec:
           key: showPrivateCommentBadge
           value: true
           help: 开启后，私密评论和回复会显示私密状态标识
+        - $formkit: checkbox
+          label: 隐藏已登录用户信息
+          name: hideAccountInfo
+          id: hideAccountInfo
+          key: hideAccountInfo
+          value: false
+          help: 开启后，评论和回复表单中不再显示当前登录用户的头像、昵称和退出登录按钮。
+        - $formkit: checkbox
+          label: 隐藏登录链接
+          name: hideLoginLink
+          id: hideLoginLink
+          key: hideLoginLink
+          value: false
+          help: 开启后，匿名评论表单中不再显示「（或登录账号）」链接。
     - group: security
       label: 安全设置
       formSchema:

@@ -430,7 +430,7 @@ export class BaseForm extends LitElement {
         ${when(
           !this.currentUser && this.allowAnonymousComments,
           () => html`
-            <div class="form-inputs grid grid-cols-1 md:grid-cols-4 gap-2 items-center">
+            <div class="form-inputs grid grid-cols-1 ${this.configMapData?.basic.hideLoginLink ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-2 items-center">
               <input
                 name="displayName"
                 value=${this.customAccount.displayName}
@@ -461,13 +461,16 @@ export class BaseForm extends LitElement {
                 autocomplete="url"
                 class="input"
               />
-              <a href=${this.loginUrl} rel="nofollow" class="form-login-link text-text-3 hover:text-text-1 text-xs transition-colors select-none">${msg('(Or login)')}</a>
+              ${when(
+                !this.configMapData?.basic.hideLoginLink,
+                () => html`<a href=${this.loginUrl} rel="nofollow" class="form-login-link text-text-3 hover:text-text-1 text-xs transition-colors select-none">${msg('(Or login)')}</a>`
+              )}
             </div>
           `
         )}
 
         <div class="form__footer">
-          ${this.currentUser ? this.renderAccountInfo() : ''}
+          ${this.currentUser && !this.configMapData?.basic.hideAccountInfo ? this.renderAccountInfo() : ''}
           ${when(
             !this.currentUser && !this.allowAnonymousComments,
             () => html`

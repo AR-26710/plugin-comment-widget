@@ -16,6 +16,8 @@ interface BasicConfig {
   showIpLocation?: boolean;
   enablePrivateComment?: boolean;
   showPrivateCommentBadge?: boolean;
+  hideAccountInfo?: boolean;
+  hideLoginLink?: boolean;
 }
 
 interface SecurityConfig {
